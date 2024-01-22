@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:30:00 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/21 17:32:28 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:22:17 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-void    *ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void    		*calloc_ptr;
+	void			*calloc_ptr;
 	unsigned char	*p;
 	size_t			i;
 
 	i = 0;
 	calloc_ptr = malloc(count * size);
-    if (calloc_ptr == NULL)
-		return (NULL);
+	if (calloc_ptr == NULL)
+		return (free(calloc_ptr), NULL);
 	p = (unsigned char *)calloc_ptr;
 	while (i < count)
 	{
@@ -57,15 +57,16 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		s1 = ft_calloc(1, sizeof(char));
 		if (s1 == NULL)
-			return (NULL);
+			return (free(s1), NULL);
 	}
 	str = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (str == NULL)
-		return (NULL);
+		return (free(str), NULL);
 	while (s1[++i])
 		str[i] = s1[i];
 	while (s2[j])
 		str[i++] = s2[j++];
+	free(s1);
 	return (str);
 }
 
@@ -102,20 +103,17 @@ char	*line_remaining(char *line)
 	{
 		remain = ft_calloc(1, 1);
 		if (remain == NULL)
-			return (NULL);
+			return (free(remain), NULL);
 		return (remain);
 	}
 	else
 	{
-		remain = ft_calloc(ft_strlen(line) - i + 1, sizeof(char));	
+		remain = ft_calloc(ft_strlen(line) - i + 1, sizeof(char));
 		if (remain == NULL)
-			return (NULL);
+			return (free(remain), NULL);
 		while (line[i])
-		{
-			remain[j] = line[i];
-			i++;
-			j++;
-		}
+			remain[j++] = line[i++];
 	}
+	free(line);
 	return (remain);
 }
