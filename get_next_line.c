@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/21 13:31:39 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:25:22 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,19 @@ char	*create_line(char *lines, int fd)
 
 	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (buff == NULL)
-		return (NULL);
+		return (free(buff), NULL);
 	bytes = 1;
 	while (bytes > 0)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
+			return (free(buff), NULL);
 		buff[bytes] = '\0';
 		lines = ft_strjoin(lines, buff);
 		if (found_newline(lines) > 0)
 			break ;
 	}
+	free(buff);
 	return (lines);
 }
 
@@ -52,7 +50,7 @@ char	*extract_line(char *line)
 	}
 	l = ft_calloc(i + 1, sizeof(char));
 	if (l == NULL)
-		return (NULL);
+		return (free(l), NULL);
 	i = 0;
 	while (line[i])
 	{
@@ -90,6 +88,6 @@ int main()
 	int fd = open("file.txt", O_RDONLY);
 	char *line;
 	
-	line = get_next_line(fd);
-	printf("%s", line);
+	while ((line = get_next_line(fd)) != NULL)
+		printf("%s", line);
 } */
