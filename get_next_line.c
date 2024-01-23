@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/22 19:25:22 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:54:05 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,30 @@ char	*create_line(char *lines, int fd)
 
 char	*extract_line(char *line)
 {
-	int		i;
+	int		len;
 	char	*l;
 
 	if (!line)
 		return (NULL);
-	i = found_newline(line);
-	if (i == 0)
+	len = found_newline(line);
+	if (len == 0)
 	{
-		while (line[i])
-			i++;
+		while (line[len])
+			len++;
 	}
-	l = ft_calloc(i + 1, sizeof(char));
+	l = ft_calloc(len + 1, sizeof(char));
 	if (l == NULL)
 		return (free(l), NULL);
-	i = 0;
-	while (line[i])
+	len = 0;
+	while (line[len])
 	{
-		if (line[i] == '\n')
+		if (line[len] == '\n')
 		{
-			l[i] = line[i];
+			l[len] = line[len];
 			break ;
 		}
-		l[i] = line[i];
-		i++;
+		l[len] = line[len];
+		len++;
 	}
 	return (l);
 }
@@ -87,7 +87,10 @@ int main()
 {
 	int fd = open("file.txt", O_RDONLY);
 	char *line;
-	
+
 	while ((line = get_next_line(fd)) != NULL)
+	{
 		printf("%s", line);
+		free(line);
+	}
 } */
