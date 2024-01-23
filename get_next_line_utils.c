@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:30:00 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/22 19:22:17 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:45:13 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,19 @@ size_t	ft_strlen(const char *str)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void			*calloc_ptr;
-	unsigned char	*p;
+	unsigned char	*calloc_ptr;
 	size_t			i;
 
 	i = 0;
 	calloc_ptr = malloc(count * size);
 	if (calloc_ptr == NULL)
-		return (free(calloc_ptr), NULL);
-	p = (unsigned char *)calloc_ptr;
+		return (NULL);
 	while (i < count)
 	{
-		p[i] = '\0';
+		calloc_ptr[i] = '\0';
 		i++;
 	}
-	return (p);
+	return (calloc_ptr);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -101,16 +99,16 @@ char	*line_remaining(char *line)
 		return (NULL);
 	if (i == 0)
 	{
-		remain = ft_calloc(1, 1);
+		remain = ft_calloc(1, sizeof(char));
 		if (remain == NULL)
-			return (free(remain), NULL);
+			return (free(line), NULL);
 		return (remain);
 	}
 	else
 	{
 		remain = ft_calloc(ft_strlen(line) - i + 1, sizeof(char));
 		if (remain == NULL)
-			return (free(remain), NULL);
+			return (free(line), NULL);
 		while (line[i])
 			remain[j++] = line[i++];
 	}
