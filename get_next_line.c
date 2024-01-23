@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/23 11:54:05 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:22:22 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*extract_line(char *line)
 	}
 	l = ft_calloc(len + 1, sizeof(char));
 	if (l == NULL)
-		return (free(l), NULL);
+		return (free(line), NULL);
 	len = 0;
 	while (line[len])
 	{
