@@ -6,13 +6,13 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/24 14:14:51 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:52:29 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*create_line(char *lines, int fd)
+char	*create_line(char *line, int fd)
 {
 	char	*buff;
 	int		bytes;
@@ -26,16 +26,16 @@ char	*create_line(char *lines, int fd)
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes == -1)
 		{
-			free(lines);
+			free(line);
 			return (free(buff), NULL);
 		}
 		buff[bytes] = '\0';
-		lines = ft_strjoin(lines, buff);
-		if (found_newline(lines) > 0)
+		line = ft_strjoin(line, buff);
+		if (found_newline(line) > 0)
 			break ;
 	}
 	free(buff);
-	return (lines);
+	return (line);
 }
 
 char	*extract_line(char *line)
@@ -43,8 +43,6 @@ char	*extract_line(char *line)
 	int		len;
 	char	*l;
 
-	if (!line)
-		return (NULL);
 	len = found_newline(line);
 	if (len == 0)
 	{
