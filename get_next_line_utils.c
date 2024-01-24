@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:30:00 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/23 18:31:04 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:04:00 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		s1 = ft_calloc(1, sizeof(char));
 		if (s1 == NULL)
-			return (free(s1), NULL);
+			return (NULL);
 	}
 	str = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (str == NULL)
@@ -102,7 +102,6 @@ char	*line_remaining(char *line)
 		remain = ft_calloc(1, sizeof(char));
 		if (remain == NULL)
 			return (free(line), NULL);
-		return (remain);
 	}
 	else
 	{
