@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:30:00 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/24 14:04:00 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:24:29 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (str == NULL)
-		return (free(s1), NULL);
+		return (NULL);
 	while (s1[++i])
 		str[i] = s1[i];
 	while (s2[j])
@@ -96,18 +96,18 @@ char	*line_remaining(char *line)
 	i = found_newline(line);
 	j = 0;
 	if (!line)
-		return (free(line), NULL);
+		return (NULL);
 	if (i == 0)
 	{
 		remain = ft_calloc(1, sizeof(char));
 		if (remain == NULL)
-			return (free(line), NULL);
+			return (NULL);
 	}
 	else
 	{
 		remain = ft_calloc(ft_strlen(line) - i + 1, sizeof(char));
 		if (remain == NULL)
-			return (free(line), NULL);
+			return (NULL);
 		while (line[i])
 			remain[j++] = line[i++];
 	}
