@@ -6,11 +6,11 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:19:10 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/24 13:19:17 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:25:00 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -32,7 +32,7 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	calloc_ptr = malloc(count * size);
 	if (calloc_ptr == NULL)
-		return (free(calloc_ptr), NULL);
+		return (NULL);
 	while (i < count)
 	{
 		calloc_ptr[i] = '\0';
@@ -55,11 +55,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		s1 = ft_calloc(1, sizeof(char));
 		if (s1 == NULL)
-			return (free(s1), NULL);
+			return (NULL);
 	}
 	str = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (str == NULL)
-		return (free(str), NULL);
+		return (NULL);
 	while (s1[++i])
 		str[i] = s1[i];
 	while (s2[j])
@@ -96,18 +96,18 @@ char	*line_remaining(char *line)
 	i = found_newline(line);
 	j = 0;
 	if (!line)
-		return (free(line), NULL);
+		return (NULL);
 	if (i == 0)
 	{
 		remain = ft_calloc(1, sizeof(char));
 		if (remain == NULL)
-			return (free(remain), NULL);
+			return (NULL);
 	}
 	else
 	{
 		remain = ft_calloc(ft_strlen(line) - i + 1, sizeof(char));
 		if (remain == NULL)
-			return (free(remain), NULL);
+			return (NULL);
 		while (line[i])
 			remain[j++] = line[i++];
 	}
