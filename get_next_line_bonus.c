@@ -6,11 +6,11 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:17:43 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/24 18:03:09 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:25:12 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*create_line(char *line, int fd)
 {
@@ -92,15 +92,15 @@ int main()
 {
 	int fd = open("file.txt", O_RDONLY);
 	int fd2 = open("file2.txt", O_RDONLY);
+	int fd3 = open("file3.txt", O_RDONLY);
 	char *line;
-	char *l;
 
 	line = get_next_line(fd);
 	printf("%s", line);
+	line = get_next_line(fd2);
+	printf("%s", line);
+	line = get_next_line(fd3);
+	printf("%s", line);
 	line = get_next_line(fd);
 	printf("%s", line);
-	l = get_next_line(fd2);
-	printf("%s", l);
-	l = get_next_line(fd2);
-	printf("%s", l);
 } */
