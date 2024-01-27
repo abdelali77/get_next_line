@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:17:43 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/25 17:25:12 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/27 11:00:35 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,15 @@ int main()
 
 	line = get_next_line(fd);
 	printf("%s", line);
+	free(line);
 	line = get_next_line(fd2);
 	printf("%s", line);
+	free(line);
 	line = get_next_line(fd3);
 	printf("%s", line);
+	free(line);
 	line = get_next_line(fd);
 	printf("%s", line);
+	free(line);
+	system("leaks a.out");
 } */
