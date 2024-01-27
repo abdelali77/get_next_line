@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/25 17:23:49 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/27 10:59:04 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ int main()
 		printf("%s", line);
 		free(line);
 	}
+	system("leaks a.ou");
 } */
