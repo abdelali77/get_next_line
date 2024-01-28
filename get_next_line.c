@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:24:34 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/27 10:59:04 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/28 10:50:40 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,3 @@ char	*get_next_line(int fd)
 	lines = line_remaining(lines);
 	return (nl);
 }
-
-/* #include <stdio.h>
-#include <fcntl.h>
-int main()
-{
-	int fd = open("file.txt", O_RDONLY);
-	char *line;
-
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	system("leaks a.ou");
-} */
