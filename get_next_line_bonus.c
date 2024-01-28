@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:17:43 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/27 11:00:35 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/28 11:15:41 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ char	*extract_line(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*lines[10240];
+	static char	*lines[257];
 	char		*nl;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
 		return (NULL);
 	if (found_newline(lines[fd]) == 0)
 		lines[fd] = create_line(lines[fd], fd);
@@ -85,27 +85,3 @@ char	*get_next_line(int fd)
 	lines[fd] = line_remaining(lines[fd]);
 	return (nl);
 }
-
-/* #include <stdio.h>
-#include <fcntl.h>
-int main()
-{
-	int fd = open("file.txt", O_RDONLY);
-	int fd2 = open("file2.txt", O_RDONLY);
-	int fd3 = open("file3.txt", O_RDONLY);
-	char *line;
-
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd2);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd3);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	system("leaks a.out");
-} */
