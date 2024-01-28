@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:25:28 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/26 10:55:09 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/28 17:44:48 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 10
 # endif
 
-# include "stdlib.h"
-# include "unistd.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
