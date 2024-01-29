@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:17:43 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/28 11:15:41 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:21:09 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*create_line(char *line, int fd)
 	char	*buff;
 	int		bytes;
 
-	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (buff == NULL)
 		return (NULL);
 	bytes = 1;
@@ -49,20 +49,21 @@ char	*extract_line(char *line)
 		while (line[len])
 			len++;
 	}
-	l = ft_calloc(len + 1, sizeof(char));
+	l = malloc((len + 1) * sizeof(char));
 	if (l == NULL)
 		return (NULL);
 	len = 0;
 	while (line[len])
 	{
+		l[len] = line[len];
 		if (line[len] == '\n')
 		{
-			l[len] = line[len];
+			len++;
 			break ;
 		}
-		l[len] = line[len];
 		len++;
 	}
+	l[len] = '\0';
 	return (l);
 }
 
