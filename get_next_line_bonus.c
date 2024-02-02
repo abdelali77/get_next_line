@@ -38,10 +38,10 @@ char	*create_line(char *line, int fd)
 	return (line);
 }
 
-char	*extract_line(char *line)
+char *extract_line(char *line)
 {
-	int		len;
-	char	*l;
+	int len;
+	char *e_l;
 
 	len = found_newline(line);
 	if (len == 0)
@@ -49,22 +49,22 @@ char	*extract_line(char *line)
 		while (line[len])
 			len++;
 	}
-	l = malloc((len + 1) * sizeof(char));
-	if (l == NULL)
+	e_l = malloc((len + 1) * sizeof(char));
+	if (e_l == NULL)
 		return (NULL);
 	len = 0;
 	while (line[len])
 	{
-		l[len] = line[len];
+		e_l[len] = line[len];
 		if (line[len] == '\n')
 		{
 			len++;
-			break ;
+			break;
 		}
 		len++;
 	}
-	l[len] = '\0';
-	return (l);
+	e_l[len] = '\0';
+	return (e_l);
 }
 
 char	*get_next_line(int fd)
