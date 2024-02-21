@@ -69,20 +69,20 @@ char	*extract_line(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*lines;
+	static char	*line;
 	char		*nl;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (found_newline(lines) == 0)
-		lines = create_line(lines, fd);
-	if (!lines || lines[0] == '\0')
+	if (found_newline(line) == 0)
+		line = create_line(line, fd);
+	if (!line || line[0] == '\0')
 	{
-		free(lines);
-		lines = NULL;
+		free(line);
+		line = NULL;
 		return (NULL);
 	}
-	nl = extract_line(lines);
-	lines = line_remaining(lines);
+	nl = extract_line(line);
+	line = line_remaining(line);
 	return (nl);
 }
