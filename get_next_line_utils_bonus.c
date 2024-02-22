@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:19:10 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/01/29 12:21:32 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:47:27 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = -1;
 	j = 0;
-	if (!s1 && !s2)
-		return (NULL);
 	if (!s1)
 	{
 		s1 = malloc(1 * sizeof(char));
@@ -80,8 +78,6 @@ char	*line_remaining(char *line)
 
 	i = found_newline(line);
 	j = 0;
-	if (!line)
-		return (NULL);
 	if (i == 0)
 	{
 		remain = malloc(1 * sizeof(char));

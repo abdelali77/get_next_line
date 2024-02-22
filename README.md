@@ -1,2 +1,3 @@
 # get_next_line
-Reading a line from a fd is way too tedious
+
+`get next line` is a project that aims to read line by line from a given File Descriptor.

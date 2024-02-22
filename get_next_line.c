@@ -41,7 +41,7 @@ char	*create_line(char *line, int fd)
 char	*extract_line(char *line)
 {
 	int		len;
-	char	*l;
+	char	*e_l;
 
 	len = found_newline(line);
 	if (len == 0)
@@ -49,13 +49,13 @@ char	*extract_line(char *line)
 		while (line[len])
 			len++;
 	}
-	l = malloc((len + 1) * sizeof(char));
-	if (l == NULL)
+	e_l = malloc((len + 1) * sizeof(char));
+	if (e_l == NULL)
 		return (NULL);
 	len = 0;
 	while (line[len])
 	{
-		l[len] = line[len];
+		e_l[len] = line[len];
 		if (line[len] == '\n')
 		{
 			len++;
@@ -63,26 +63,26 @@ char	*extract_line(char *line)
 		}
 		len++;
 	}
-	l[len] = '\0';
-	return (l);
+	e_l[len] = '\0';
+	return (e_l);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*lines;
+	static char	*line;
 	char		*nl;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (found_newline(lines) == 0)
-		lines = create_line(lines, fd);
-	if (!lines || lines[0] == '\0')
+	if (found_newline(line) == 0)
+		line = create_line(line, fd);
+	if (!line || line[0] == '\0')
 	{
-		free(lines);
-		lines = NULL;
+		free(line);
+		line = NULL;
 		return (NULL);
 	}
-	nl = extract_line(lines);
-	lines = line_remaining(lines);
+	nl = extract_line(line);
+	line = line_remaining(line);
 	return (nl);
 }
