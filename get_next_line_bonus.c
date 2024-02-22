@@ -6,7 +6,7 @@
 /*   By: abmahfou <abmahfou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:17:43 by abmahfou          #+#    #+#             */
-/*   Updated: 2024/02/22 11:33:45 by abmahfou         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:47:59 by abmahfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ char	*create_line(char *line, int fd)
 	return (line);
 }
 
-char *extract_line(char *line)
+char	*extract_line(char *line)
 {
-	int len;
-	char *e_l;
+	int		len;
+	char	*e_l;
 
 	len = found_newline(line);
 	if (len == 0)
@@ -59,7 +59,7 @@ char *extract_line(char *line)
 		if (line[len] == '\n')
 		{
 			len++;
-			break;
+			break ;
 		}
 		len++;
 	}
